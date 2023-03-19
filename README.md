@@ -71,7 +71,7 @@ yarn release
 
 ---
 
-## Install
+## Steps to Install PocketFund locally
 
     $ git clone https://github.com/YOUR_USERNAME/PROJECT_TITLE
     $ cd PROJECT_TITLE
