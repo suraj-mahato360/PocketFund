@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+  margin: 0;
+  background-color: #252954;
+}
+.hidden {
+  display: none;
+}
+.landingpage {
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+  max-width: 1100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #1f1d2b;
+  box-shadow: 0px 0px 100px rgba(109, 147, 2, 0.5);
+}
+.landingpage::before {
+  content: "";
+  position: absolute;
+  width: 123px;
+  height: 123px;
+  left: 60%;
+  top: 138px;
+  filter: blur(90px);
+  background-color: #a8c752;
+}
+.landingpage::after {
+  content: "";
+  position: absolute;
+  width: 123px;
+  height: 123px;
+  left: 80%;
+  top: 550px;
+  background-color: #18b2de;
+  filter: blur(80px);
+}
+.landingpage .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+}
+.landingpage .box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+.landingpage .auction {
+  margin-top: 100px;
+}
+.landingpage .discover {
+  display: flex;
+  flex-direction: column;
+}
+.landingpage .footer {
+  margin: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.landingpage .footer2 {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-top: 1px solid #f2f2f2;
+}
+.navbar .hamburgerlogowrap {
+  display: flex;
+  align-items: center;
+}
+.navbar .hamburger {
+  display: none;
+  color: #d7d7d7;
+  background-color: #1f1d2b;
+  border: none;
+  margin-right: 10px;
+}
+.navbar .createbtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  width: 126px;
+  height: 45px;
+  color: #bcbcbc;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+}
+.navbar .createbtn.selectedbtn {
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+}
+.navbar .navlogo {
+  height: 100%;
+  background: linear-gradient(93.51deg, #9b51e0 2.84%, #3081ed 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+}
+.navbar .navlink {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #bcbcbc;
+}
+.navbar .navlink.selectedlink {
+  background: linear-gradient(93.51deg, #9b51e0 2.84%, #3081ed 99.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1.5px solid #9b51e0;
+}
+.navbar .navlink:not(:last-child) {
+  margin-right: 32px;
+}
+.box .infobox {
+  animation-name: leftslide;
+  animation-duration: 0.8s;
+  max-height: 500px;
+  max-width: 55%;
+  overflow: hidden;
+}
+.box .infobox-boldtext {
+  margin: 0;
+  font-family: Poppins;
+  color: #fff;
+  font-size: 65px;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: -2px;
+  text-align: left;
+}
+.box .infobox-slimtext {
+  margin: 24px 0;
+  font-family: Poppins;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+.box .infobox-btnwrapper {
+  display: flex;
+}
+.box .infobox-explorebtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1d2b;
+  padding: 15px 35px;
+  border-radius: 16px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -1px;
+  color: #fff;
+  margin-left: 40px;
+}
+.box .infobox-createbtn {
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 8px 38px;
+  border: 1px solid #d7d7d7;
+  border-radius: 16px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -1px;
+  color: #fff;
+}
+.box .infobox .selected {
+  border: none;
+  background: linear-gradient(103.91deg, #9b51e0 21.01%, rgba(48, 129, 237, 0.8) 100%);
+}
+.box .display {
+  animation-name: rightslide;
+  animation-duration: 0.8s;
+  padding: 14px;
+  border: 1px solid;
+  background: linear-gradient(169.44deg, rgba(58, 129, 191, 0.08) 1.85%, rgba(65, 48, 90, 0.08) 98.72%);
+  border-radius: 35px;
+  max-height: 450px;
+  max-width: 50%;
+  overflow: hidden;
+}
+.box .display-nft {
+  object-fit: cover;
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+}
+.box .display .infowrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.box .display .info {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+}
+.box .display .info p {
+  margin: 0;
+}
+.box .display .info-img {
+  object-fit: cover;
+
+
+  
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.box .display .info2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: 'Poppins';
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+}
+.box .display .info2 p {
+  margin: 0;
+}
+.box .display .info2 .iconwrapper {
+  display: flex;
+  align-items: center;
+}
+.box .display .info2 .iconwrapper svg {
+  margin-right: 5px;
+}
+.auction .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+.auction .title .titlebold {
+  margin: 0;
+  font-family: 'Poppins';
+  font-style: normal;
+  color: #fff;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 72px;
+}
+.auction .title .titleslim {
+  margin: 0;
+  font-family: 'Poppins';
+  font-style: normal;
+  color: #d7d7d7;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+  letter-spacing: -1px;
+}
+.auction .nft {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  justify-content: space-between;
+}
+.started {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.started-boldtext {
+  margin: 0;
+  align-self: center;
+  font-family: "Poppins";
+  font-style: normal;
+  color: #fff;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 72px;
+}
+.started-slimtext {
+  margin: 0;
+  align-self: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+  color: #e2e2e2;
+}
+.started-items {
+  padding: 60px 80px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-content: space-between;
+}
+.started-items:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  top: 80px;
+  filter: blur(80px);
+  background: linear-gradient(93.51deg, #9b51e0 2.84%, #3081ed 99.18%);
+}
+.started-items .itemwrapper p {
+  width: 100px;
+  margin: 0;
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+}
+.started-items-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  background-color: red;
+  background: rgba(255, 255, 255, 0.095);
+  box-shadow: inset 2.01px -2.01px 20px rgba(214, 214, 214, 0.17), inset -3.01333px 3.01333px 3.01333px rgba(255, 255, 255, 0.39);
+  backdrop-filter: blur(74.4293px);
+}
+.discover-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.discover-title p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  letter-spacing: -1px;
+  color: #fff;
+}
+.discover-items {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  justify-content: space-between;
+}
+.discover-loadbtn {
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: center;
+  width: 161px;
+  height: 40px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  background-color: transparent;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #bcbcbc;
+}
+.footer-main {
+  max-width: 40%;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 40px;
+  color: #fff;
+}
+.footer-navigate {
+  display: flex;
+}
+.footer-navigate .nav {
+  margin-left: 60px;
+}
+.footer-navigate .nav h5 {
+  margin: 0;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+}
+.footer-navigate .nav p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  color: #d7d7d7;
+}
+.footer2 p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 36px;
+  color: #828282;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+.item-img {
+  object-fit: cover;
+  flex-shrink: 0;
+  width: 200px;
+  height: 220px;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.item-img:hover {
+  transform: scale(1.05);
+}
+.item-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  color: #fff;
+}
+.item-date {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: #bcbcbc;
+}
+.filters {
+  display: flex;
+  align-items: center;
+}
+.filters .filter {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+}
+.filters .filter svg {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.filters .filterbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  background: linear-gradient(93.51deg, #9b51e0 2.84%, #3081ed 99.18%);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+}
+.filters .filterbtn svg {
+  margin-right: 5px;
+}
+@media screen and (max-width: 1500px) {
+  .landingpage {
+    max-width: 1200px;
+ }
+}
+@media screen and (max-width: 1040px) {
+  .box {
+    flex-direction: column;
+ }
+  .box .infobox {
+    max-height: 450px;
+    max-width: none;
+    margin-bottom: 50px;
+ }
+  .box .display {
+    display: none;
+    max-height: none;
+    max-width: none;
+ }
+  .auction .nft {
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+ }
+  .discover-items {
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+ }
+  .footer {
+    flex-direction: column;
+ }
+  .footer-main {
+    max-width: 80%;
+    margin-bottom: 50px;
+    text-align: center;
+ }
+  .footer-navigate .nav:first-child {
+    margin: 0;
+ }
+}
+@media screen and (max-width: 925px) {
+  .navlinkwrap {
+    display: none;
+ }
+  .buttonwrap {
+    display: none;
+ }
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+ }
+  .started-slimtext {
+    text-align: center;
+ }
+}
+@media screen and (max-width: 825px) {
+  .started-items {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    padding: 50px 0;
+ }
+  .started-items:before {
+    height: 200px;
+    top: 90px;
+    filter: blur(120px);
+ }
+  .discover-items {
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+ }
+}
+@media screen and (max-width: 700px) {
+  .box {
+    flex-direction: column;
+ }
+  .box .infobox {
+    max-height: none;
+    max-width: none;
+    margin-bottom: 50px;
+ }
+  .box .display {
+    display: block;
+    max-height: none;
+    max-width: none;
+ }
+  .discover-title {
+    justify-content: center;
+ }
+  .discover-title .filters {
+    display: none;
+ }
+  .auction .title {
+    justify-content: center;
+ }
+  .auction .title .titleslim {
+    display: none;
+ }
+}
+@media screen and (max-width: 600px) {
+  .landingpage {
+    padding: 0 20px;
+ }
+  .box .infobox-boldtext {
+    font-size: 45px;
+    line-height: 50px;
+ }
+  .box .infobox-slimtext {
+    font-size: 12px;
+    line-height: 16px;
+ }
+  .discover-items {
+    grid-template-columns: auto;
+    justify-content: space-around;
+ }
+  .auction .nft {
+    grid-template-columns: auto;
+    justify-content: space-around;
+ }
+  .footer-main {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+ }
+  .footer-navigate {
+    justify-content: space-between;
+    width: 100%;
+ }
+  .footer-navigate .nav {
+    margin-left: 20px;
+ }
+  .footer-navigate .nav h5 {
+    font-size: 15px;
+    line-height: 30px;
+ }
+  .footer-navigate .nav p {
+    font-size: 10px;
+    line-height: 18px;
+ }
+}
+@media screen and (max-width: 480px) {
+  .landingpage .box .infobox-boldtext {
+    font-size: 32px;
+    line-height: 1.4em;
+    text-align: center;
+ }
+  .landingpage .box .infobox-slimtext {
+    text-align: center;
+ }
+  .landingpage .box .infobox-btnwrapper {
+    justify-content: center;
+ }
+}
+@keyframes leftslide {
+  from {
+    transform: translateX(-700px);
+ }
+  to {
+    transform: translateX(0px);
+ }
+}
+@keyframes rightslide {
+  from {
+    transform: translateX(550px);
+ }
+  to {
+    transform: translateX(0px);
+ }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="landingpage">
+  <div class="navbar">
+    <a class="navlogo" >
+      <svg width="180" height="25" viewBox="0 0 180 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.295455 24V0.727272H9.02273C10.8106 0.727272 12.3106 1.06061 13.5227 1.72727C14.7424 2.39394 15.6629 3.31061 16.2841 4.47727C16.9129 5.63636 17.2273 6.95454 17.2273 8.43182C17.2273 9.92424 16.9129 11.25 16.2841 12.4091C15.6553 13.5682 14.7273 14.4811 13.5 15.1477C12.2727 15.8068 10.7614 16.1364 8.96591 16.1364H3.18182V12.6705H8.39773C9.44318 12.6705 10.2992 12.4886 10.9659 12.125C11.6326 11.7614 12.125 11.2614 12.4432 10.625C12.7689 9.98864 12.9318 9.25758 12.9318 8.43182C12.9318 7.60606 12.7689 6.87879 12.4432 6.25C12.125 5.62121 11.6288 5.13258 10.9545 4.78409C10.2879 4.42803 9.42803 4.25 8.375 4.25H4.51136V24H0.295455ZM28.071 24.3409C26.3665 24.3409 24.8892 23.9659 23.6392 23.2159C22.3892 22.4659 21.4195 21.4167 20.7301 20.0682C20.0483 18.7197 19.7074 17.1439 19.7074 15.3409C19.7074 13.5379 20.0483 11.9583 20.7301 10.6023C21.4195 9.24621 22.3892 8.19318 23.6392 7.44318C24.8892 6.69318 26.3665 6.31818 28.071 6.31818C29.7756 6.31818 31.2528 6.69318 32.5028 7.44318C33.7528 8.19318 34.7188 9.24621 35.4006 10.6023C36.09 11.9583 36.4347 13.5379 36.4347 15.3409C36.4347 17.1439 36.09 18.7197 35.4006 20.0682C34.7188 21.4167 33.7528 22.4659 32.5028 23.2159C31.2528 23.9659 29.7756 24.3409 28.071 24.3409ZM28.0938 21.0455C29.018 21.0455 29.7907 20.7917 30.4119 20.2841C31.0331 19.7689 31.4953 19.0795 31.7983 18.2159C32.1089 17.3523 32.2642 16.3902 32.2642 15.3295C32.2642 14.2614 32.1089 13.2955 31.7983 12.4318C31.4953 11.5606 31.0331 10.8674 30.4119 10.3523C29.7907 9.83712 29.018 9.57955 28.0938 9.57955C27.1468 9.57955 26.3589 9.83712 25.7301 10.3523C25.1089 10.8674 24.643 11.5606 24.3324 12.4318C24.0294 13.2955 23.8778 14.2614 23.8778 15.3295C23.8778 16.3902 24.0294 17.3523 24.3324 18.2159C24.643 19.0795 25.1089 19.7689 25.7301 20.2841C26.3589 20.7917 27.1468 21.0455 28.0938 21.0455ZM47.5398 24.3409C45.7973 24.3409 44.3011 23.9583 43.0511 23.1932C41.8087 22.428 40.8504 21.3712 40.1761 20.0227C39.5095 18.6667 39.1761 17.1061 39.1761 15.3409C39.1761 13.5682 39.517 12.0038 40.1989 10.6477C40.8807 9.28409 41.8428 8.22348 43.0852 7.46591C44.3352 6.70076 45.8125 6.31818 47.517 6.31818C48.9337 6.31818 50.1875 6.57955 51.2784 7.10227C52.3769 7.61742 53.2519 8.34848 53.9034 9.29545C54.5549 10.2348 54.9261 11.3333 55.017 12.5909H51.0852C50.9261 11.75 50.5473 11.0492 49.9489 10.4886C49.358 9.92045 48.5663 9.63636 47.5739 9.63636C46.733 9.63636 45.9943 9.86364 45.358 10.3182C44.7216 10.7652 44.2254 11.4091 43.8693 12.25C43.5208 13.0909 43.3466 14.0985 43.3466 15.2727C43.3466 16.4621 43.5208 17.4848 43.8693 18.3409C44.2178 19.1894 44.7064 19.8447 45.3352 20.3068C45.9716 20.7614 46.7178 20.9886 47.5739 20.9886C48.1799 20.9886 48.7216 20.875 49.1989 20.6477C49.6837 20.4129 50.089 20.0758 50.4148 19.6364C50.7405 19.197 50.964 18.6629 51.0852 18.0341H55.017C54.9186 19.2689 54.5549 20.3636 53.9261 21.3182C53.2973 22.2652 52.4413 23.0076 51.358 23.5455C50.2746 24.0758 49.0019 24.3409 47.5398 24.3409ZM62.1449 18.5227L62.1335 13.5568H62.7926L69.0653 6.54545H73.8722L66.1562 15.1364H65.304L62.1449 18.5227ZM58.3949 24V0.727272H62.5085V24H58.3949ZM69.3494 24L63.6676 16.0568L66.4403 13.1591L74.2699 24H69.3494ZM83.6222 24.3409C81.8722 24.3409 80.3608 23.9773 79.0881 23.25C77.8229 22.5152 76.8494 21.4773 76.1676 20.1364C75.4858 18.7879 75.1449 17.2008 75.1449 15.375C75.1449 13.5795 75.4858 12.0038 76.1676 10.6477C76.857 9.28409 77.8191 8.22348 79.054 7.46591C80.2888 6.70076 81.7396 6.31818 83.4062 6.31818C84.482 6.31818 85.4972 6.49242 86.4517 6.84091C87.4138 7.18182 88.2623 7.71212 88.9972 8.43182C89.7396 9.15151 90.3229 10.0682 90.7472 11.1818C91.1714 12.2879 91.3835 13.6061 91.3835 15.1364V16.3977H77.0767V13.625H87.4403C87.4328 12.8371 87.2623 12.1364 86.929 11.5227C86.5956 10.9015 86.1297 10.4129 85.5312 10.0568C84.9403 9.70076 84.2509 9.52273 83.4631 9.52273C82.6222 9.52273 81.8835 9.72727 81.2472 10.1364C80.6108 10.5379 80.1146 11.0682 79.7585 11.7273C79.41 12.3788 79.232 13.0947 79.2244 13.875V16.2955C79.2244 17.3106 79.41 18.1818 79.7812 18.9091C80.1525 19.6288 80.6714 20.1818 81.3381 20.5682C82.0047 20.947 82.785 21.1364 83.679 21.1364C84.2775 21.1364 84.8191 21.053 85.304 20.8864C85.7888 20.7121 86.2093 20.4583 86.5653 20.125C86.9214 19.7917 87.1903 19.3788 87.3722 18.8864L91.2131 19.3182C90.9706 20.3333 90.5085 21.2197 89.8267 21.9773C89.1525 22.7273 88.2888 23.3106 87.2358 23.7273C86.1828 24.1364 84.9782 24.3409 83.6222 24.3409ZM103.58 6.54545V9.72727H93.5455V6.54545H103.58ZM96.0227 2.36364H100.136V18.75C100.136 19.303 100.22 19.7273 100.386 20.0227C100.561 20.3106 100.788 20.5076 101.068 20.6136C101.348 20.7197 101.659 20.7727 102 20.7727C102.258 20.7727 102.492 20.7538 102.705 20.7159C102.924 20.678 103.091 20.6439 103.205 20.6136L103.898 23.8295C103.678 23.9053 103.364 23.9886 102.955 24.0795C102.553 24.1705 102.061 24.2235 101.477 24.2386C100.447 24.2689 99.5189 24.1136 98.6932 23.7727C97.8674 23.4242 97.2121 22.8864 96.7273 22.1591C96.25 21.4318 96.0152 20.5227 96.0227 19.4318V2.36364Z" fill="white"/>
+      <path d="M107.202 24V0.727272H122.111V4.26136H111.418V10.5795H121.088V14.1136H111.418V24H107.202ZM135.801 16.6591V6.54545H139.915V24H135.926V20.8977H135.744C135.35 21.875 134.703 22.6742 133.801 23.2955C132.907 23.9167 131.805 24.2273 130.494 24.2273C129.35 24.2273 128.339 23.9735 127.46 23.4659C126.589 22.9508 125.907 22.2045 125.415 21.2273C124.922 20.2424 124.676 19.053 124.676 17.6591V6.54545H128.79V17.0227C128.79 18.1288 129.093 19.0076 129.699 19.6591C130.305 20.3106 131.1 20.6364 132.085 20.6364C132.691 20.6364 133.278 20.4886 133.847 20.1932C134.415 19.8977 134.881 19.4583 135.244 18.875C135.616 18.2841 135.801 17.5455 135.801 16.6591ZM148.259 13.7727V24H144.145V6.54545H148.077V9.51136H148.281C148.683 8.53409 149.323 7.75758 150.202 7.18182C151.088 6.60606 152.183 6.31818 153.486 6.31818C154.69 6.31818 155.74 6.57576 156.634 7.09091C157.535 7.60606 158.232 8.35227 158.724 9.32955C159.224 10.3068 159.471 11.4924 159.463 12.8864V24H155.349V13.5227C155.349 12.3561 155.046 11.4432 154.44 10.7841C153.842 10.125 153.012 9.79545 151.952 9.79545C151.232 9.79545 150.592 9.95455 150.031 10.2727C149.478 10.5833 149.043 11.0341 148.724 11.625C148.414 12.2159 148.259 12.9318 148.259 13.7727ZM170.122 24.3068C168.751 24.3068 167.524 23.9545 166.44 23.25C165.357 22.5455 164.501 21.5227 163.872 20.1818C163.243 18.8409 162.929 17.2121 162.929 15.2955C162.929 13.3561 163.247 11.7197 163.884 10.3864C164.527 9.04545 165.395 8.03409 166.486 7.35227C167.577 6.66288 168.793 6.31818 170.134 6.31818C171.156 6.31818 171.997 6.49242 172.656 6.84091C173.315 7.18182 173.838 7.5947 174.224 8.07955C174.611 8.55682 174.91 9.00758 175.122 9.43182H175.293V0.727272H179.418V24H175.372V21.25H175.122C174.91 21.6742 174.603 22.125 174.202 22.6023C173.8 23.072 173.27 23.4735 172.611 23.8068C171.952 24.1402 171.122 24.3068 170.122 24.3068ZM171.27 20.9318C172.141 20.9318 172.884 20.697 173.497 20.2273C174.111 19.75 174.577 19.0871 174.895 18.2386C175.213 17.3902 175.372 16.4015 175.372 15.2727C175.372 14.1439 175.213 13.1629 174.895 12.3295C174.584 11.4962 174.122 10.8485 173.509 10.3864C172.902 9.92424 172.156 9.69318 171.27 9.69318C170.353 9.69318 169.588 9.93182 168.974 10.4091C168.361 10.8864 167.899 11.5455 167.588 12.3864C167.277 13.2273 167.122 14.1894 167.122 15.2727C167.122 16.3636 167.277 17.3371 167.588 18.1932C167.906 19.0417 168.372 19.7121 168.986 20.2045C169.607 20.6894 170.368 20.9318 171.27 20.9318Z" fill="#CDFB4C"/>
+    </svg>
+  </a>  
+    
+  </div>
+  <div class="box">
+    <div class="infobox">
+      <p class="infobox-boldtext">
+        Show your support with awesome NFT's using Verbwire!<br><br>
+        <img src="eb0813a-small-Verbwire_Logo_Black.png" alt="Verbwire_Logo_Black" border="0">
+        <br><br>
+      </p>
+    </div>
+    <div class="display">
+      <img class="display-nft" src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="unsplash-OG44d93i-NJk" border="0">
+      <div class="infowrapper">
+        <div class="info">
+          <img class="info-img" src="https://images.unsplash.com/photo-1535207010348-71e47296838a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" alt="unsplash-OG44d93i-NJk" border="0">
+          <div>
+            <p>Laura</p>
+            <p>0.21 Weth</p>
+          </div>
+  </div>
+        <div class="info2">
+          <p>WE ARE HERE</p>
+          <div class="iconwrapper">
+            <svg width="22" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.7365 2C3.6575 2 1.5 3.8804 1.5 6.5135c0 3.1074 2.3236 5.9603 4.8612 8.1207 1.2458 1.0606 2.4954 1.9137 3.4352 2.5022.4692.2937.8593.5203 1.1305.6727L11 17.85l.0731-.0409a27.984 27.984 0 0 0 1.1304-.6727c.9399-.5885 2.1895-1.4416 3.4353-2.5022C18.1764 12.4738 20.5 9.6209 20.5 6.5135 20.5 3.8805 18.3425 2 16.2635 2c-2.1054 0-3.8008 1.389-4.552 3.6426a.75.75 0 0 1-1.423 0C9.5373 3.389 7.8418 2 5.7365 2ZM11 18.7027l.3426.6672a.7502.7502 0 0 1-.6852 0L11 18.7027ZM0 6.5135C0 3.052 2.829.5 5.7365.5 8.0298.5 9.8808 1.7262 11 3.6048 12.1192 1.7262 13.9702.5 16.2635.5 19.171.5 22 3.052 22 6.5135c0 3.8183-2.8014 7.06-5.3888 9.2628-1.3167 1.121-2.6296 2.0166-3.6116 2.6314-.4918.308-.9025.5467-1.1918.7092a19.142 19.142 0 0 1-.4301.2347l-.0248.013-.007.0036-.0021.0011c-.0003.0001-.0012.0006-.3438-.6666-.3426.6672-.3424.6673-.3426.6672l-.0033-.0017-.007-.0036-.0248-.013a19.142 19.142 0 0 1-.4301-.2347 29.324 29.324 0 0 1-1.1918-.7092c-.982-.6148-2.295-1.5104-3.6116-2.6314C2.8014 13.5735 0 10.3318 0 6.5135Z" fill="#E0E0E0"/>
+  </svg>
+            25
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <form action="/image" method="POST" enctype="multipart/form-data" >
+      <div class="form-group mb-3">
+        <label>Image</label>
+        <input type="file" class="form-control" placeholder="Input image file path (example: C:\yourFile.jpeg)" name="filePath">
+      </div> 
+  
+      <div class="form-group mb-3">
+        <label>NFT Name</label>
+        <input type="text" class="form-control" placeholder="Enter the name of your NFT" name="name">
+      </div>
+      <div class="form-group mb-3">
+        <label>NFT Description</label>
+        <input type="text" class="form-control" placeholder="Enter NFT description" name="description">
+      </div>
+      <div class="form-group mb-3">
+        <label>Recipient Wallet Address</label>
+        <input type="text" class="form-control" placeholder="Enter recipient's wallet address" name="recipientAddress">
+      </div>
+      <div class="form-group mb-3">
+        <label>allowPlatformToOperateToken(true/false)</label>
+        <input type="text" class="form-control" placeholder="true" name="allowPlatformToOperateToken">
+      </div>
+      <div class="form-group mb-3">
+        <label>Blockchain</label>
+        <input type="text" class="form-control" placeholder="goerli" name="chain">
+      </div>
+  
+      <div class="d-grid mt-3">
+      <button type="submit" class="btn btn-success">MINT</button>
+      </div>
+    </form>
+  <div class="started">
+    <p class="started-boldtext">WHY POCKETFUND?</p>
+    <p class="started-slimtext"> With help of Verbwire API we can provide features like</p>
+    <div class="started-items">
+      <div class="itemwrapper">
+        <div class="started-items-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+            <path style="stroke:none;fill-rule:nonzero;fill:#e0e0e0;fill-opacity:1" d="M24.7969 14.6719c.4375-.4414.4375-1.1524 0-1.5938-.4414-.4375-1.1524-.4375-1.5938 0L16.5 19.7851l-2.9531-2.957c-.4414-.4375-1.1524-.4375-1.5938 0-.4375.4414-.4375 1.1524 0 1.5938l3.75 3.75a1.1246 1.1246 0 0 0 1.5938 0Zm0 0"/>
+            <path style="stroke:none;fill-rule:evenodd;fill:#e0e0e0;fill-opacity:1" d="M18.8086.957a2.6005 2.6005 0 0 0-1.6172 0L4.8164 4.9688C3.7344 5.3202 3 6.3241 3 7.4648V15c0 9.2852 5.6563 16.0586 14.1016 19.246a2.5853 2.5853 0 0 0 1.7968 0C27.3438 31.0587 33 24.2853 33 15V7.4648a2.6182 2.6182 0 0 0-1.8164-2.496Zm-.9219 2.1368a.3738.3738 0 0 1 .2266 0l12.375 4.0117c.1601.0547.2617.1992.2617.3593V15c0 8.1914-4.9219 14.2227-12.6445 17.1367a.2815.2815 0 0 1-.211 0C10.172 29.2227 5.25 23.1914 5.25 15V7.4648c0-.1601.1016-.3046.2617-.3593Zm0 0"/>
+          </svg>
+</div>
+        <p>BUILD FASTER</p>
+      </div>
+      <div class="itemwrapper">
+        <div class="started-items-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+    <path style="stroke:none;fill-rule:evenodd;fill:#bdbdbd;fill-opacity:1" d="M4.125 3C2.6758 3 1.5 4.1758 1.5 5.625v5.25c0 1.4492 1.1758 2.625 2.625 2.625h27.75c1.4492 0 2.625-1.1758 2.625-2.625v-5.25C34.5 4.1758 33.3242 3 31.875 3Zm27.75 2.25H4.125c-.207 0-.375.168-.375.375v5.25c0 .207.168.375.375.375h27.75c.207 0 .375-.168.375-.375v-5.25c0-.207-.168-.375-.375-.375Zm0 0"/>
+    <path style="stroke:none;fill-rule:nonzero;fill:#bdbdbd;fill-opacity:1" d="M4.125 15c.621 0 1.125.504 1.125 1.125v14.25c0 .207.168.375.375.375h24.75c.207 0 .375-.168.375-.375v-14.25c0-.621.504-1.125 1.125-1.125S33 15.504 33 16.125v14.25C33 31.8242 31.8242 33 30.375 33H5.625C4.1758 33 3 31.8242 3 30.375v-14.25C3 15.504 3.504 15 4.125 15Zm0 0"/>
+    <path style="stroke:none;fill-rule:nonzero;fill:#bdbdbd;fill-opacity:1" d="M14.625 17.25c-.621 0-1.125.504-1.125 1.125s.504 1.125 1.125 1.125h6.75c.621 0 1.125-.504 1.125-1.125s-.504-1.125-1.125-1.125Zm0 0"/>
+  </svg>
+        </div>
+        <p>FUTURE PROOFED</p>
+      </div>
+      <div class="itemwrapper">
+        <div class="started-items-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="px" viewBox="0 0 36 31">
+    <path style="stroke:none;fill-rule:evenodd;fill:#bdbdbd;fill-opacity:1" d="M2.832 2.9219c-.2148 0-.3867.1758-.3867.3906v24.375c0 .2148.1719.3906.3867.3906h4.9453l13.332-14.1875c1.0548-1.121 2.8165-1.1445 3.8985-.0508l8.5469 8.6407V3.3125c0-.2148-.1719-.3906-.3867-.3906Zm30.336 27.5156H2.832c-1.5039 0-2.7226-1.2305-2.7226-2.75V3.3125c0-1.5195 1.2187-2.75 2.7226-2.75h30.336c1.5039 0 2.7226 1.2305 2.7226 2.75v24.375c0 1.5195-1.2187 2.75-2.7226 2.75ZM22.8008 15.5156 10.996 28.0781H33.168c.2148 0 .3867-.1758.3867-.3906v-1.871L23.3594 15.5077a.388.388 0 0 0-.5586.0078Zm-9.4688-4.3398c0 1.5195-1.2187 2.75-2.7226 2.75-1.5 0-2.7188-1.2305-2.7188-2.75 0-1.5196 1.2188-2.75 2.7188-2.75 1.5039 0 2.7226 1.2304 2.7226 2.75Zm2.336 0c0 2.8242-2.2657 5.1094-5.0586 5.1094-2.789 0-5.0547-2.2852-5.0547-5.1094s2.2656-5.1094 5.0547-5.1094c2.793 0 5.0586 2.2852 5.0586 5.1094Zm0 0"/>
+  </svg>
+        </div>
+        <p>NO WALLED GARDENS</p>
+      </div>
+      <div class="itemwrapper">
+        <div class="started-items-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+    <path style="stroke:none;fill-rule:evenodd;fill:#bdbdbd;fill-opacity:1" d="M30.9453.5a16.7245 16.7245 0 0 0-11.4687 4.5508l-2.0274 1.914a35.9135 35.9135 0 0 0-2.3984 2.4805h-7.836c-.957 0-1.8437.5-2.3359 1.3203L.668 17.7891c-.1952.3242-.2226.7226-.0702 1.0664.1523.3476.4609.5976.828.6758l7.1134 1.496c.0586.0782.125.1485.1992.2188l3.1054 2.914 2.9102 3.1016c.0703.0742.1406.1406.2188.1992l1.496 7.1133c.0782.3672.3282.6758.6758.8281a1.158 1.158 0 0 0 1.0664-.0703l7.0235-4.211a2.7222 2.7222 0 0 0 1.3203-2.3358v-7.836a36.8748 36.8748 0 0 0 2.4844-2.3984l1.9101-2.0274A16.7411 16.7411 0 0 0 35.5 5.0508l-.004-1.8281C35.496 1.7187 34.2774.5 32.7774.5Zm-6.7226 22.3398a39.89 39.89 0 0 1-1.582 1.1172l-5.2813 3.5196 1.0547 5.0156 5.621-3.3711c.1172-.0703.1876-.1992.1876-.336ZM8.5234 18.6406l3.5196-5.2812a34.8776 34.8776 0 0 1 1.1172-1.582H7.2148a.3952.3952 0 0 0-.3359.1913L3.508 17.586ZM21.0781 6.75a14.3862 14.3862 0 0 1 9.8672-3.918h1.832c.211 0 .3868.1758.3868.3907v1.828c0 3.672-1.3985 7.2032-3.9141 9.8712l-1.9102 2.0273a34.7388 34.7388 0 0 1-5.996 5.0664l-5.1133 3.4102-2.711-2.8906c-.0195-.0157-.0351-.0352-.0547-.0508l-2.8906-2.7149 3.4102-5.1172c1.457-2.1796 3.1523-4.1914 5.0625-5.9921Zm5.4766 5.0273c0 1.2891-1.043 2.332-2.332 2.332-1.2891 0-2.332-1.0429-2.332-2.332 0-1.289 1.0429-2.332 2.332-2.332 1.289 0 2.332 1.043 2.332 2.332ZM9.4453 32c1.3985-1.3984 1.3985-4.043 0-5.4453-1.4023-1.3985-4.0469-1.3985-5.4453 0-1.879 1.8828-2.246 6.0703-2.3164 7.3789a.3609.3609 0 0 0 .3828.3828C3.375 34.2461 7.5625 33.879 9.4454 32Zm0 0"/>
+  </svg>
+        </div>
+        <p>EASY LEARNING CURVE</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer2">
+    <div></div>
+    <p>&copy; 2023 Technoverts</p>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+    
+  </body>
+</html>

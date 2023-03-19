@@ -30,7 +30,7 @@ const Home = () => {
           <img src={mainimage} alt="mainimage" />
         </div>
         <div className="message w-1/2 h-1/3 text-white text-center pt-28 font-bold text-4xl">
-          <h3>Help communities and organization in there <span className='text-[#6D9302]'> Social Cause</span> By Donating from your metamask</h3>
+          <h3>Help communities and organization in their  <span className='text-[#6D9302]'> Social Cause</span> By donating from your MetaMask</h3>
           <a href="http://localhost:8080/image" target='blank'><button className='pt-2 mt-3 pb-2 pl-4 pr-4 text-xl bg-[#6D9302] rounded-xl'>Get NFT</button></a>
         </div>
       </div>

@@ -4,7 +4,7 @@ import dashboard from './dashboard.svg';
 import logout from './logout.svg';
 import payment from './payment.svg';
 import profile from './profile.svg';
-// import sun from './sun.svg';
+import sun from './sun.svg';
 import withdraw from './withdraw.svg';
 import tagType from './type.svg';
 import search from './search.svg';
@@ -21,7 +21,7 @@ export {
   logout,
   payment,
   profile,
-  // sun,
+  sun,
   withdraw,
   search,
   menu,
