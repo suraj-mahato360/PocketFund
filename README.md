@@ -13,6 +13,11 @@
 
 - VerbWire API
 
+## DAPP Preview
+
+![image](https://user-images.githubusercontent.com/88882430/226154993-2ffb83a4-ea92-43c6-a8b8-576aa5d39f3a.png)
+
+![image](https://user-images.githubusercontent.com/88882430/226155022-2b9ba7ef-015b-4cea-a97e-cf1b97c39851.png)
 
 ## Getting Started (With ThirdWeb)
 
