@@ -13,7 +13,7 @@
 
 - VerbWire API
 
-## DAPP Preview
+## DAPP(Decentralized Application) Preview
 
 ![image](https://user-images.githubusercontent.com/88882430/226154993-2ffb83a4-ea92-43c6-a8b8-576aa5d39f3a.png)
 
