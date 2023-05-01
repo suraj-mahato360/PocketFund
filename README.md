@@ -1,5 +1,5 @@
 # PocketFund  
-##### PocketFund is a DAPP(Decentralized Application) making use of the verbwire API to provide an open platform for innovative projects and startups aimed at providing social good. Our platform enables small teams/startups to raise necessary funds via crowdfunding through ledger transactions. Pocketfund is completely secure and provides decentralized finance. It employs Solidity for generating a smart contract and ThirdWeb for launching and managing a Web3 project. 
+##### PocketFund is a DAPP(Decentralized Application) making use of the verbwire API to provide an open platform for innovative projects and startups aimed at providing social good. Our platform enables small teams/startups to raise necessary funds via crowdfunding through ledger transactions. Pocketfund is completely secure and provides decentralized finance. It employs Solidity for generating a smart contract and ThirdWeb for launching and managing a Web3 project. Pitching an organisation through the online platform can be a valuable form for marketing and also get the feedback of the organisation. Our platform supports raising finances for social causes with no upfront fees and middlemen.
 
 ## Tech Stack Used
 
